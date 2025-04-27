@@ -31,6 +31,7 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 @app.get("/")
+@app.head("/")
 async def read_index():
     return FileResponse(os.path.join("frontend", "index.html"))
 
