@@ -1,0 +1,12 @@
+.env
+__pycache__/
+"sqlite:///./chatbot.db"
+*.pyc
+*.db
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.DS_Store
