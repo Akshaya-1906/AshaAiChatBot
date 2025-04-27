@@ -8,13 +8,13 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 from backend.chat_memory import get_chat_history, update_chat_history, create_session_id, load_chat_history_from_db
-from database import SessionLocal, Message, cleanup_old_messages
-from job_listings import get_jooble_jobs, get_remotive_jobs
-from events import get_events
-from location import get_location
-from crypto_utils import encrypt_text, decrypt_text
-from intent_classifier import classify_intent
-from mistral_client import call_mistral  # ✅ use real AI model here
+from backend.database import SessionLocal, Message, cleanup_old_messages
+from backend.job_listings import get_jooble_jobs, get_remotive_jobs
+from backend.events import get_events
+from backend.location import get_location
+from backend.crypto_utils import encrypt_text, decrypt_text
+from backend.intent_classifier import classify_intent
+from backend.mistral_client import call_mistral  # ✅ use real AI model here
 
 from collections import defaultdict
 
