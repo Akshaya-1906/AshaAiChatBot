@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
-from chat_memory import get_chat_history, update_chat_history, create_session_id, load_chat_history_from_db
+from backend.chat_memory import get_chat_history, update_chat_history, create_session_id, load_chat_history_from_db
 from database import SessionLocal, Message, cleanup_old_messages
 from job_listings import get_jooble_jobs, get_remotive_jobs
 from events import get_events
