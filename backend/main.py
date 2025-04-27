@@ -17,16 +17,27 @@ from backend.intent_classifier import classify_intent
 from backend.mistral_client import call_mistral  # ✅ use real AI model here
 
 from collections import defaultdict
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
+
 
 # Load environment variables
 load_dotenv()
 
 app = FastAPI()
 
+# Serve static frontend files
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
+@app.get("/")
+async def read_index():
+    return FileResponse(os.path.join("frontend", "index.html"))
+
 # CORS settings
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500","http://localhost:5500","http://127.0.0.1:5501","http://localhost:5501","http://127.0.0.1:5502","http://localhost:5502","http://127.0.0.1:5503","http://localhost:5503"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

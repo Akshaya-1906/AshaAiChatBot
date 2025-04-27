@@ -43,7 +43,7 @@ async function handleSend(messageText) {
   scrollToBottom();
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/chat', {
+    const response = await fetch('/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ async function handleSend(messageText) {
 // Load full chat history on page load
 async function loadChatHistory() {
   try {
-    const response = await fetch('http://127.0.0.1:8000/history', {
+    const response = await fetch('/history', {
       method: 'GET',
       credentials: 'include'
     });
@@ -87,7 +87,7 @@ clearButton.addEventListener('click', async () => {
   if (!confirm("Are you sure you want to clear the conversation?")) return;
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/delete_conversation', {
+    const response = await fetch('/delete_conversation', {
       method: 'DELETE',
       credentials: 'include'
     });
