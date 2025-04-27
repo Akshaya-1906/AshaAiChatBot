@@ -21,8 +21,8 @@ def reset_chat_history(session_id: str):
     chat_sessions[session_id] = []
 
 # ✅ New function to load from DB
-from database import SessionLocal, Message
-from crypto_utils import decrypt_text
+from backend.database import SessionLocal, Message
+from backend.crypto_utils import decrypt_text
 
 def load_chat_history_from_db(session_id: str) -> List[Dict[str, str]]:
     db = SessionLocal()
