@@ -28,12 +28,15 @@ load_dotenv()
 app = FastAPI()
 
 # Serve static frontend files
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
+# Serve static files correctly
+app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
 
+# Serve index.html
 @app.get("/")
 @app.head("/")
 async def read_index():
     return FileResponse(os.path.join("frontend", "index.html"))
+
 
 # CORS settings
 app.add_middleware(
